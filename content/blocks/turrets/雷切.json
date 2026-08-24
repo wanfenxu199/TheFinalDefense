@@ -1,0 +1,87 @@
+{
+    "name": "雷切电磁炮",
+    "description": "发射EMP弹头，命中后分裂出连锁闪电，对机械单位和建筑造成巨额伤害。",
+    "type": "ItemTurret",
+    "category": "turret",
+    "alwaysUnlocked": true,
+
+    // ===== 基础属性 =====
+    "health": 800,
+    "size": 3,
+    "range": 240,              // 30格
+    "reload": 60,              // 每秒1发，手感沉重
+    "rotateSpeed": 8,
+    "shootCone": 20,           // 有一定宽容度
+    "targetAir": true,
+    "targetGround": true,
+
+    // ===== 弹药类型（只吃巨浪合金） =====
+    "ammoTypes": {
+        "surge-alloy": {
+            "type": "EmpBulletType",
+            "speed": 6,
+            "lifetime": 40,
+            "damage": 300,
+            "hitSize": 6,
+            "radius": 32,                // EMP爆炸范围
+            "status": "electrified",
+            "statusDuration": 120,
+            "ammoMultiplier": 2,         // 每份弹药打2发
+            "buildingDamageMultiplier": 0.6,
+            "hitShake": 4,
+            "hitSound": "explosion",
+
+            // ===== 命中后分裂出闪电链 =====
+            "fragBullets": 3,
+            "fragBullet": {
+                "type": "LightningBulletType",
+                "damage": 150,
+                "lightningDamage": 150,
+                "lightningLength": 6,     // 连锁6个敌人
+                "lightningLengthRand": 4,
+                "lightningColor": "66D9FF",
+                "buildingDamageMultiplier": 0.4,
+                "status": "electrified",
+                "statusDuration": 60
+            },
+
+            // ===== 弹头拖尾特效（简单版） =====
+            
+
+            // ===== 射击特效（蓝色闪光） =====
+            "shootEffect": {
+                "type": "ParticleEffect",
+                "particles": 12,
+                "length": 20,
+                "sizeFrom": 4,
+                "sizeTo": 0,
+                "colorFrom": "66D9FF",
+                "colorTo": "FFFFFF",
+                "lifetime": 20
+            },
+            "hitEffect": "hitBulletBig"
+        }
+    },
+
+    // ===== 建造消耗（后期造价） =====
+    "requirements": [
+        { "item": "copper", "amount": 300 },
+        { "item": "lead", "amount": 200 },
+        { "item": "silicon", "amount": 150 },
+        { "item": "plastanium", "amount": 100 },
+        { "item": "surge-alloy", "amount": 80 },
+        { "item": "phase-fabric", "amount": 40 }
+    ],
+
+    // ===== 电力消耗 =====
+    "consumes": {
+        "power": 8.0
+    },
+
+    // ===== 音效 =====
+    "shootSound": "railgun",
+
+    // ===== 自动生成边框贴图（暂时） =====
+    "outlineColor": "66D9FF",
+    "outlineRadius": 5
+}

@@ -1,0 +1,50 @@
+{
+    "name": "冰霜炮塔",
+    "description": "发射冰冻弹，命中后冻结敌人，使其无法移动和攻击。配合其他炮塔效果极佳。",
+    "type": "ItemTurret",
+    "category": "turret",
+    "alwaysUnlocked": true,
+
+    "health": 400,
+    "size": 2,
+    "range": 200,
+    "reload": 15,
+    "rotateSpeed": 10,
+    "shootCone": 30,
+    "targetAir": true,
+    "targetGround": true,
+
+    "ammoTypes": {
+        "silicon": {
+            "type": "BasicBulletType",
+            "speed": 6,
+            "lifetime": 35,
+            "damage": 15,
+            "hitSize": 4,
+            "status": "frozen",
+            "statusDuration": 90,
+            "hitEffect": "hitBulletSmall",
+            "shootEffect": "shootSmall",
+            "trailEffect": "hitBulletSmall",
+            "trailChance": 0.6,
+            "trailLength": 10,
+            "trailWidth": 3,
+            "trailColor": "66DDFF",
+            "ammoMultiplier": 1
+        }
+    },
+
+    "requirements": [
+        { "item": "copper", "amount": 100 },
+        { "item": "lead", "amount": 80 },
+        { "item": "silicon", "amount": 50 }
+    ],
+
+    "consumes": {
+        "power": 2.0
+    },
+
+    "shootSound": "laser",
+    "outlineColor": "66DDFF",
+    "outlineRadius": 4
+}

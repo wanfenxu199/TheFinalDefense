@@ -1,0 +1,10 @@
+{
+    "name": "天穹晶",
+    "description": "来自高能星核的结晶，蕴藏极端能量，可用于终极武器制造。",
+    "color": "9966FF",
+    "flammability": 0.0,
+    "explosiveness": 0.0,
+    "radioactivity": 0.3,
+    "hardness": 8,
+    "cost": 4.0
+}

@@ -1,0 +1,46 @@
+{
+    "name": "蜂刺追踪炮",
+    "description": "发射高精度追踪导弹，可锁定空中与地面目标。造价中等，适合中期主力防御。",
+    "type": "PowerTurret",
+    "category": "turret",
+    "alwaysUnlocked": true,
+
+    "health": 500,
+    "size": 2,
+    "range": 180,
+    "reload": 18,
+    "rotateSpeed": 12,
+    "shootCone": 60,
+    "targetAir": true,
+    "targetGround": true,
+
+    "shootType": {
+        "type": "BasicBulletType",
+        "damage": 40,
+        "speed": 5.5,
+        "lifetime": 60,
+        "width": 8,
+        "height": 8,
+        "hitEffect": "hitBulletSmall",
+        "shootEffect": "shootSmall"
+    },
+
+    "requirements": [
+        { "item": "copper", "amount": 150 },
+        { "item": "lead", "amount": 100 },
+        { "item": "silicon", "amount": 80 },
+        { "item": "plastanium", "amount": 40 },
+        { "item": "surge-alloy", "amount": 25 }
+    ],
+
+    "consumes": {
+        "power": 5.0
+    },
+
+    "shootEffect": "shootBigSmoke",
+    "smokeEffect": "shootBigSmoke",
+    "shootSound": "missile",
+
+    "outlineColor": "FFAA00",
+    "outlineRadius": 4
+}

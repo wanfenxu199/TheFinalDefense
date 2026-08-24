@@ -1,0 +1,19 @@
+{
+    "name": "冻结",
+    "description": "完全冻住，无法移动和攻击。",
+    
+    "speedMultiplier": 0.0,
+    "reloadMultiplier": 0.0,
+    "damageMultiplier": 1.5,
+    "color": "66DDFF",
+    "effect": {
+        "type": "ParticleEffect",
+        "particles": 8,
+        "length": 10,
+        "sizeFrom": 4,
+        "sizeTo": 0,
+        "colorFrom": "66DDFF",
+        "colorTo": "FFFFFF",
+        "lifetime": 20
+    }
+}

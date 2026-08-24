@@ -1,0 +1,26 @@
+{
+    "name": "冰霜墙",
+    "description": "带有冻结光环的墙体，靠近的敌人会被减速。配合冰霜炮塔形成控场防线。",
+    "type": "Wall",
+    "category": "defense",
+    "alwaysUnlocked": true,
+
+    "health": 3000,
+    "armor": 4,
+    "size": 2,
+    "breakable": true,
+    "solid": true,
+    "floating": false,
+
+   
+
+    "requirements": [
+        { "item": "copper", "amount": 150 },
+        { "item": "lead", "amount": 100 },
+        { "item": "silicon", "amount": 80 },
+        { "item": "plastanium", "amount": 50 }
+    ],
+
+    "outlineColor": "66DDFF",
+    "outlineRadius": 3
+}

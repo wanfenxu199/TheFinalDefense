@@ -1,0 +1,84 @@
+{
+    "name": "极寒监牢",
+    "description": "超长冷却的控场炮塔，发射极寒能量波，冻结范围内所有敌人并造成持续伤害。",
+    "type": "PowerTurret",
+    "category": "turret",
+    "alwaysUnlocked": true,
+
+    "health": 600,
+    "size": 3,
+    "range": 240,
+    "reload": 600,
+    "rotateSpeed": 4,
+    "shootCone": 360,
+    "targetAir": true,
+    "targetGround": true,
+
+    "shootType": {
+        "type": "BasicBulletType",
+        "damage": 0,
+        "speed": 0,
+        "lifetime": 1,
+        "hitSize": 0,
+        "status": "frozen",
+        "statusDuration": 300,
+        "splashDamage": 0,
+        "splashDamageRadius": 80,
+        "hitEffect": {
+            "type": "MultiEffect",
+            "effects": [
+                {
+                    "type": "WaveEffect",
+                    "sizeFrom": 0,
+                    "sizeTo": 80,
+                    "strokeFrom": 6,
+                    "strokeTo": 0,
+                    "colorFrom": "66DDFF",
+                    "colorTo": "FFFFFF",
+                    "lifetime": 30,
+                    "interp": "pow2Out"
+                },
+                {
+                    "type": "ParticleEffect",
+                    "particles": 40,
+                    "length": 50,
+                    "sizeFrom": 6,
+                    "sizeTo": 0,
+                    "colorFrom": "66DDFF",
+                    "colorTo": "FFFFFF",
+                    "lifetime": 25,
+                    "cone": 360
+                }
+            ]
+        },
+        "shootEffect": {
+            "type": "ParticleEffect",
+            "particles": 30,
+            "length": 30,
+            "sizeFrom": 8,
+            "sizeTo": 0,
+            "colorFrom": "66DDFF",
+            "colorTo": "FFFFFF",
+            "lifetime": 20,
+            "cone": 360
+        },
+        "hitSound": "laser"
+    },
+
+    "consumes": {
+        "power": 8.0
+    },
+
+    "requirements": [
+        { "item": "copper", "amount": 300 },
+        { "item": "lead", "amount": 250 },
+        { "item": "silicon", "amount": 200 },
+        { "item": "plastanium", "amount": 150 },
+        { "item": "surge-alloy", "amount": 100 },
+        { "item": "phase-fabric", "amount": 60 }
+    ],
+
+    "shootSound": "laserbig",
+    "outlineColor": "66DDFF",
+    "outlineRadius": 4
+}

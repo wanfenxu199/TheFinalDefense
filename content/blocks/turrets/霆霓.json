@@ -1,0 +1,46 @@
+{
+    "name": "霆霓激光炮",
+    "description": "高能激光炮，必须正对目标才能开火，单发伤害极高，适合打击重型单位。",
+    "type": "PowerTurret",
+    "category": "turret",
+    "alwaysUnlocked": true,
+
+    "health": 500,
+    "size": 2,
+    "range": 180,
+    "reload": 25,              // 每秒2.4发，手感适中
+    "rotateSpeed": 20,         // 快速转头，弥补正对需求
+    "shootCone": 15,            // 必须正对
+    "targetAir": true,
+    "targetGround": true,
+
+    "shootType": {
+        "type": "LaserBulletType",
+        "damage": 150,          // 单发高伤，打重型单位效率高
+        "lifetime": 30,
+        "length": 200,
+        "width": 10,
+        "colors": ["00FFFF", "FF00FF"],
+        "hitEffect": "hitLaser",
+        "width": 10,
+    },
+
+    "requirements": [
+        { "item": "copper", "amount": 150 },
+        { "item": "lead", "amount": 100 },
+        { "item": "silicon", "amount": 80 },
+        { "item": "plastanium", "amount": 40 },
+        { "item": "surge-alloy", "amount": 25 }
+    ],
+
+    "consumes": {
+        "power": 5.0
+    },
+
+    "shootEffect": "shootBigSmoke",
+    "smokeEffect": "shootBigSmoke",
+    "shootSound": "laser",
+
+    "outlineColor": "00FFFF",
+    "outlineRadius": 4
+}

@@ -1,0 +1,88 @@
+{
+    "name": "天罚对空炮",
+    "description": "专门针对空中单位，发射高爆弹头，命中后产生大范围爆炸，对集群敌机造成毁灭性伤害。",
+    "type": "ItemTurret",
+    "category": "turret",
+    "alwaysUnlocked": true,
+
+    // ===== 基础属性 =====
+    "health": 600,
+    "size": 3,
+    "range": 280,              // 35格（280/8）
+    "reload": 40,              // 每秒1.5发
+    "rotateSpeed": 10,
+    "shootCone": 30,
+    "targetAir": true,         // ✅ 只攻击空中
+    "targetGround": false,     // ❌ 不攻击地面
+
+    // ===== 弹药系统（只吃巨浪合金） =====
+    "ammoTypes": {
+        "surge-alloy": {
+            "type": "BasicBulletType",
+            "speed": 8,
+            "lifetime": 35,
+            "damage": 120,
+            "hitSize": 6,
+
+            // ===== 核心：大范围爆炸 =====
+            "splashDamage": 200,        // 爆炸伤害
+            "splashDamageRadius": 48,   // 爆炸半径（6格），AOE范围巨大
+            "buildingDamageMultiplier": 0.2, // 对建筑伤害低，避免拆家太猛
+
+            // ===== 特效 =====
+            "hitEffect": {
+                "type": "MultiEffect",
+                "effects": [
+                    {
+                        "type": "WaveEffect",
+                        "sizeFrom": 0,
+                        "sizeTo": 48,
+                        "strokeFrom": 8,
+                        "strokeTo": 0,
+                        "colorFrom": "FFAA00",
+                        "colorTo": "FF4400",
+                        "lifetime": 30,
+                        "interp": "pow2Out"
+                    },
+                    {
+                        "type": "ParticleEffect",
+                        "particles": 30,
+                        "length": 40,
+                        "sizeFrom": 6,
+                        "sizeTo": 0,
+                        "colorFrom": "FFAA00",
+                        "colorTo": "FFFFFF",
+                        "lifetime": 25,
+                        "cone": 360
+                    }
+                ]
+            },
+            "shootEffect": "shootBig",
+            "hitSound": "explosion",
+
+            // ===== 弹药消耗 =====
+            "ammoMultiplier": 2
+        }
+    },
+
+    // ===== 建造消耗（后期造价） =====
+    "requirements": [
+        { "item": "copper", "amount": 200 },
+        { "item": "lead", "amount": 150 },
+        { "item": "silicon", "amount": 120 },
+        { "item": "plastanium", "amount": 80 },
+        { "item": "surge-alloy", "amount": 60 },
+        { "item": "phase-fabric", "amount": 30 }
+    ],
+
+    // ===== 电力消耗 =====
+    "consumes": {
+        "power": 6.0
+    },
+
+    "shootSound": "bigShot",
+
+    // ===== 自动生成边框贴图 =====
+    "outlineColor": "FF8800",
+    "outlineRadius": 5
+}

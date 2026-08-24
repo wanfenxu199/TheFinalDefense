@@ -1,0 +1,70 @@
+{
+    "type": "legs",
+    "name": "全能战斗平台",
+    "description": "重装战斗单位，装备双联对地火炮和双联对空导弹，自带能量护盾，配备等离子引擎。",
+    "health": 8000,
+    "armor": 12,
+    "speed": 1.2,
+    "hitSize": 24,
+    "buildSpeed": 0.5,
+    "flying": false,
+    "rotateSpeed": 3.5,
+    "shieldColor": "66DDFF",
+    "engines": [
+        {
+            "x": -14,
+            "y": -8,
+            "radius": 12,
+            "rotation": -45
+        },
+        {
+            "x": 14,
+            "y": -8,
+            "radius": 12,
+            "rotation": 45
+        }
+    ],
+    "weapons": [
+        {
+            "name": "全能战斗平台_对地炮",
+            "shootCone": 20,
+            "reload": 12,
+            "x": 8,
+            "y": 2,
+            "shootSound": "bigShot",
+            "bullet": {
+                "type": "BasicBulletType",
+                "damage": 80,
+                "speed": 6,
+                "lifetime": 40,
+                "hitSize": 6,
+                "splashDamage": 40,
+                "splashDamageRadius": 12
+            },
+            "mirror": true
+        },
+        {
+            "name": "全能战斗平台_对空导弹",
+            "shootCone": 360,
+            "reload": 18,
+            "x": -8,
+            "y": 2,
+            "shootSound": "missile",
+            "controllable": true,
+            "autoTarget": false,
+            "bullet": {
+                "type": "MissileBulletType",
+                "damage": 100,
+                "speed": 5,
+                "lifetime": 50,
+                "hitSize": 4,
+                "homingPower": 0.12,
+                "splashDamage": 50,
+                "splashDamageRadius": 14
+            },
+            "mirror": true
+        }
+    ],
+    
+    "alwaysUnlocked": true
+}

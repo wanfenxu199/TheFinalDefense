@@ -1,0 +1,25 @@
+{
+    "name": "天穹钻头",
+    "description": "专为采集天穹晶设计，需要大量电力驱动。",
+    "type": "Drill",
+    "category": "production",
+    "alwaysUnlocked": false,
+
+    "size": 3,
+    "health": 300,
+    "drillTime": 480,
+    "tier": 8,
+    "rotateSpeed": 2.5,
+    "warmupSpeed": 0.02,
+    "consumes": {
+        "power": 6.0
+    },
+    "requirements": [
+        { "item": "copper", "amount": 200 },
+        { "item": "lead", "amount": 150 },
+        { "item": "silicon", "amount": 120 },
+        { "item": "plastanium", "amount": 80 },
+        { "item": "surge-alloy", "amount": 60 }
+    ],
+    "alwaysUnlocked": true
+}

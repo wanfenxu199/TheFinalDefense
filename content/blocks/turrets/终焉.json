@@ -1,0 +1,549 @@
+{
+    "name": "终焉审判炮",
+    "description": "终极对地/对空毁灭武器。超长蓄力后发射一枚巨型实体炮弹，命中后产生覆盖全屏的毁灭性爆炸，瞬间清空一切敌人。自带旋转光环和能量护盾，支持硅、塑钢、巨浪合金三种弹药。",
+    "type": "ItemTurret",
+    "category": "turret",
+    "alwaysUnlocked": true,
+
+    // ===== 基础属性 =====
+    "health": 3000,
+    "armor": 5,
+    "size": 5,
+    "range": 400,
+    "reload": 300,
+    "rotateSpeed": 2,
+    "shootCone": 10,
+    "targetAir": true,
+    "targetGround": true,
+    "inaccuracy": 0,
+    //蓄力字段
+    "shoot": {
+    "firstShotDelay": 120,   // 蓄力时间（帧），120=2秒
+    "shots": 1,
+    "shotDelay": 0
+},
+        
+    
+
+
+    // ===== 头顶旋转光环 =====
+    "drawer": {
+        "type": "DrawTurret",
+        "parts": [
+            {
+                "type": "ShapePart",
+                "progress": "warmup",
+                "y": -28,
+                "sides": 6,
+                "color": "66DDFF",
+                "rotateSpeed": 2,
+                "stroke": 0,
+                "strokeTo": 2.5,
+                "circle": false,
+                "hollow": true,
+                "radius": 0,
+                "radiusTo": 20,
+                "layer": 110
+            },
+            {
+                "type": "ShapePart",
+                "progress": "warmup",
+                "y": -28,
+                "sides": 3,
+                "color": "66DDFF",
+                "rotateSpeed": -2,
+                "stroke": 0,
+                "strokeTo": 2,
+                "circle": false,
+                "hollow": true,
+                "radius": 0,
+                "radiusTo": 14,
+                "layer": 110
+            },
+            {
+                "type": "ShapePart",
+                "progress": "warmup",
+                "y": -28,
+                "color": "FFFFFF",
+                "stroke": 0,
+                "strokeTo": 3,
+                "circle": true,
+                "hollow": false,
+                "radius": 0,
+                "radiusTo": 4,
+                "layer": 110
+            },
+            {
+                "type": "ShapePart",
+                "progress": "warmup",
+                "y": -28,
+                "sides": 6,
+                "color": "66DDFF40",
+                "rotateSpeed": 1,
+                "stroke": 0,
+                "strokeTo": 1.5,
+                "circle": false,
+                "hollow": true,
+                "radius": 0,
+                "radiusTo": 26,
+                "layer": 109
+            }
+        ]
+    },
+
+    // ===== 弹药系统 =====
+    "ammoTypes": {
+
+        // ===== 硅弹药 =====
+        "silicon": {
+            "type": "BasicBulletType",
+            "speed": 8,
+            "lifetime": 40,
+            "damage": 300,
+            "hitSize": 10,
+            "splashDamage": 800,
+            "splashDamageRadius": 60,
+            "buildingDamageMultiplier": 0.3,
+
+            "fragBullets": 4,
+            "fragVelocityMin": 2,
+            "fragVelocityMax": 4,
+            "fragBullet": {
+                "type": "BasicBulletType",
+                "damage": 0,
+                "speed": 0.1,
+                "lifetime": 20,
+                "hitSize": 0,
+                "collides": false,
+                "absorbable": false,
+                "reflectable": false,
+                "hittable": false,
+                "pierce": false,
+                "trailEffect": "hitBulletSmall",
+                "trailChance": 1.0,
+                "trailLength": 12,
+                "trailWidth": 3,
+                "trailColor": "88DDFF",
+                "hitEffect": "none",
+                "despawnEffect": "none"
+            },
+
+            "parts": [
+                {
+                    "type": "HaloPart",
+                    "y": 0,
+                    "x": 0,
+                    "sides": 4,
+                    "shapes": 1,
+                    "color": "88DDFF",
+                    "shapeRotation": 45,
+                    "tri": false,
+                    "hollow": true,
+                    "radius": 6,
+                    "radiusTo": 6,
+                    "triLength": 0,
+                    "triLengthTo": 0,
+                    "haloRadius": 4,
+                    "haloRadiusTo": 4,
+                    "haloRotation": 0,
+                    "haloRotateSpeed": 4,
+                    "layer": 110,
+                    "mirror": false
+                },
+                {
+                    "type": "HaloPart",
+                    "y": 0,
+                    "x": 0,
+                    "sides": 4,
+                    "shapes": 1,
+                    "color": "FFFFFF",
+                    "shapeRotation": 45,
+                    "tri": false,
+                    "hollow": true,
+                    "radius": 3,
+                    "radiusTo": 3,
+                    "triLength": 0,
+                    "triLengthTo": 0,
+                    "haloRadius": 0,
+                    "haloRadiusTo": 0,
+                    "haloRotation": 0,
+                    "haloRotateSpeed": 0,
+                    "layer": 110,
+                    "mirror": false
+                }
+            ],
+
+            "hitEffect": {
+                "type": "MultiEffect",
+                "effects": [
+                    {
+                        "type": "WaveEffect",
+                        "sizeFrom": 0,
+                        "sizeTo": 60,
+                        "strokeFrom": 8,
+                        "strokeTo": 0,
+                        "colorFrom": "88DDFF",
+                        "colorTo": "4488FF",
+                        "lifetime": 30,
+                        "interp": "pow2Out"
+                    },
+                    {
+                        "type": "ParticleEffect",
+                        "particles": 30,
+                        "length": 50,
+                        "sizeFrom": 6,
+                        "sizeTo": 0,
+                        "colorFrom": "88DDFF",
+                        "colorTo": "FFFFFF",
+                        "lifetime": 25,
+                        "cone": 360
+                    }
+                ]
+            },
+            "shootEffect": "shootBig",
+            "hitSound": "explosion",
+            "ammoMultiplier": 3
+        },
+
+        // ===== 塑钢弹药 =====
+        "plastanium": {
+            "type": "BasicBulletType",
+            "speed": 9,
+            "lifetime": 40,
+            "damage": 500,
+            "hitSize": 11,
+            "splashDamage": 1500,
+            "splashDamageRadius": 70,
+            "buildingDamageMultiplier": 0.3,
+
+            "fragBullets": 5,
+            "fragVelocityMin": 2,
+            "fragVelocityMax": 5,
+            "fragBullet": {
+                "type": "BasicBulletType",
+                "damage": 0,
+                "speed": 0.1,
+                "lifetime": 22,
+                "hitSize": 0,
+                "collides": false,
+                "absorbable": false,
+                "reflectable": false,
+                "hittable": false,
+                "pierce": false,
+                "trailEffect": "hitBulletSmall",
+                "trailChance": 1.0,
+                "trailLength": 15,
+                "trailWidth": 4,
+                "trailColor": "66FFAA",
+                "hitEffect": "none",
+                "despawnEffect": "none"
+            },
+
+            "parts": [
+                {
+                    "type": "HaloPart",
+                    "y": 0,
+                    "x": 0,
+                    "sides": 6,
+                    "shapes": 1,
+                    "color": "66FFAA",
+                    "shapeRotation": 30,
+                    "tri": false,
+                    "hollow": true,
+                    "radius": 7,
+                    "radiusTo": 7,
+                    "triLength": 0,
+                    "triLengthTo": 0,
+                    "haloRadius": 5,
+                    "haloRadiusTo": 5,
+                    "haloRotation": 0,
+                    "haloRotateSpeed": 5,
+                    "layer": 110,
+                    "mirror": false
+                },
+                {
+                    "type": "HaloPart",
+                    "y": 0,
+                    "x": 0,
+                    "sides": 6,
+                    "shapes": 1,
+                    "color": "FFFFFF",
+                    "shapeRotation": 30,
+                    "tri": false,
+                    "hollow": true,
+                    "radius": 3.5,
+                    "radiusTo": 3.5,
+                    "triLength": 0,
+                    "triLengthTo": 0,
+                    "haloRadius": 0,
+                    "haloRadiusTo": 0,
+                    "haloRotation": 0,
+                    "haloRotateSpeed": 0,
+                    "layer": 110,
+                    "mirror": false
+                },
+                {
+                    "type": "HaloPart",
+                    "y": 0,
+                    "x": 0,
+                    "sides": 6,
+                    "shapes": 1,
+                    "color": "66FFAA",
+                    "shapeRotation": 30,
+                    "tri": false,
+                    "hollow": true,
+                    "radius": 7,
+                    "radiusTo": 7,
+                    "triLength": 0,
+                    "triLengthTo": 0,
+                    "haloRadius": 0,
+                    "haloRadiusTo": 0,
+                    "haloRotation": 0,
+                    "haloRotateSpeed": 0,
+                    "layer": 109,
+                    "mirror": false
+                }
+            ],
+
+            "hitEffect": {
+                "type": "MultiEffect",
+                "effects": [
+                    {
+                        "type": "WaveEffect",
+                        "sizeFrom": 0,
+                        "sizeTo": 70,
+                        "strokeFrom": 10,
+                        "strokeTo": 0,
+                        "colorFrom": "66FFAA",
+                        "colorTo": "00CC66",
+                        "lifetime": 35,
+                        "interp": "pow2Out"
+                    },
+                    {
+                        "type": "WaveEffect",
+                        "sizeFrom": 0,
+                        "sizeTo": 50,
+                        "strokeFrom": 6,
+                        "strokeTo": 0,
+                        "colorFrom": "FFFFFF",
+                        "colorTo": "88FFCC",
+                        "lifetime": 25,
+                        "interp": "pow2Out"
+                    },
+                    {
+                        "type": "ParticleEffect",
+                        "particles": 40,
+                        "length": 55,
+                        "sizeFrom": 7,
+                        "sizeTo": 0,
+                        "colorFrom": "66FFAA",
+                        "colorTo": "FFFFFF",
+                        "lifetime": 30,
+                        "cone": 360
+                    }
+                ]
+            },
+            "shootEffect": "shootBig",
+            "hitSound": "explosion",
+            "ammoMultiplier": 2
+        },
+
+        // ===== 巨浪合金弹药 =====
+        "surge-alloy": {
+            "type": "BasicBulletType",
+            "speed": 10,
+            "lifetime": 40,
+            "damage": 800,
+            "hitSize": 12,
+            "splashDamage": 2500,
+            "splashDamageRadius": 80,
+            "buildingDamageMultiplier": 0.3,
+
+            "fragBullets": 8,
+            "fragVelocityMin": 2,
+            "fragVelocityMax": 6,
+            "fragBullet": {
+                "type": "BasicBulletType",
+                "damage": 0,
+                "speed": 0.1,
+                "lifetime": 25,
+                "hitSize": 0,
+                "collides": false,
+                "absorbable": false,
+                "reflectable": false,
+                "hittable": false,
+                "pierce": false,
+                "trailEffect": "hitBulletSmall",
+                "trailChance": 1.0,
+                "trailLength": 20,
+                "trailWidth": 5,
+                "trailColor": "FFAA00",
+                "hitEffect": "none",
+                "despawnEffect": "none"
+            },
+
+            "parts": [
+                {
+                    "type": "HaloPart",
+                    "y": 0,
+                    "x": 0,
+                    "sides": 6,
+                    "shapes": 1,
+                    "color": "FF8800",
+                    "shapeRotation": 22.5,
+                    "tri": false,
+                    "hollow": true,
+                    "radius": 8,
+                    "radiusTo": 8,
+                    "triLength": 0,
+                    "triLengthTo": 0,
+                    "haloRadius": 6,
+                    "haloRadiusTo": 6,
+                    "haloRotation": 0,
+                    "haloRotateSpeed": 6,
+                    "layer": 110,
+                    "mirror": false
+                },
+                {
+                    "type": "HaloPart",
+                    "y": 0,
+                    "x": 0,
+                    "sides": 4,
+                    "shapes": 1,
+                    "color": "FFFFFF",
+                    "shapeRotation": 45,
+                    "tri": false,
+                    "hollow": true,
+                    "radius": 4,
+                    "radiusTo": 4,
+                    "triLength": 0,
+                    "triLengthTo": 0,
+                    "haloRadius": 0,
+                    "haloRadiusTo": 0,
+                    "haloRotation": 0,
+                    "haloRotateSpeed": 0,
+                    "layer": 110,
+                    "mirror": false
+                },
+                {
+                    "type": "HaloPart",
+                    "y": 0,
+                    "x": 0,
+                    "sides": 6,
+                    "shapes": 1,
+                    "color": "FFAA00",
+                    "shapeRotation": 22.5,
+                    "tri": false,
+                    "hollow": true,
+                    "radius": 8,
+                    "radiusTo": 8,
+                    "triLength": 0,
+                    "triLengthTo": 0,
+                    "haloRadius": 3,
+                    "haloRadiusTo": 3,
+                    "haloRotation": 0,
+                    "haloRotateSpeed": -3,
+                    "layer": 109,
+                    "mirror": false
+                }
+            ],
+
+            "hitEffect": {
+                "type": "MultiEffect",
+                "effects": [
+                    {
+                        "type": "WaveEffect",
+                        "sizeFrom": 0,
+                        "sizeTo": 80,
+                        "strokeFrom": 12,
+                        "strokeTo": 0,
+                        "colorFrom": "FF8800",
+                        "colorTo": "FF0000",
+                        "lifetime": 40,
+                        "interp": "pow2Out"
+                    },
+                    {
+                        "type": "WaveEffect",
+                        "sizeFrom": 0,
+                        "sizeTo": 60,
+                        "strokeFrom": 8,
+                        "strokeTo": 0,
+                        "colorFrom": "FFFFFF",
+                        "colorTo": "FFDD00",
+                        "lifetime": 30,
+                        "interp": "pow2Out"
+                    },
+                    {
+                        "type": "ParticleEffect",
+                        "particles": 60,
+                        "length": 60,
+                        "sizeFrom": 8,
+                        "sizeTo": 0,
+                        "colorFrom": "FFAA00",
+                        "colorTo": "FFFFFF",
+                        "lifetime": 35,
+                        "cone": 360
+                    },
+                    {
+                        "type": "ParticleEffect",
+                        "particles": 30,
+                        "length": 40,
+                        "sizeFrom": 4,
+                        "sizeTo": 0,
+                        "colorFrom": "FF4400",
+                        "colorTo": "FF8800",
+                        "lifetime": 25,
+                        "cone": 360,
+                        "interp": "pow5Out"
+                    }
+                ]
+            },
+            "shootEffect": {
+                "type": "MultiEffect",
+                "effects": [
+                    {
+                        "type": "ParticleEffect",
+                        "particles": 20,
+                        "length": 30,
+                        "sizeFrom": 6,
+                        "sizeTo": 0,
+                        "colorFrom": "FFFFFF",
+                        "colorTo": "FFAA00",
+                        "lifetime": 20,
+                        "cone": 30
+                    }
+                ]
+            },
+            "hitSound": "bigExplosion",
+            "ammoMultiplier": 1
+        }
+    },
+
+    // ===== 建造消耗 =====
+    "requirements": [
+        { "item": "copper", "amount": 500 },
+        { "item": "lead", "amount": 400 },
+        { "item": "silicon", "amount": 300 },
+        { "item": "plastanium", "amount": 250 },
+        { "item": "surge-alloy", "amount": 200 },
+        { "item": "phase-fabric", "amount": 120 },
+        { "item": "thorium", "amount": 100 }
+    ],
+
+    // ===== 电力与冷却 =====
+    "consumes": {
+        "power": 20.0,
+        "coolant": {
+            "amount": 2.0,
+            "optional": false
+        }
+    },
+    "coolantMultiplier": 0.8,
+
+    // ===== 音效 =====
+    "shootSound": "railgun",
+
+    // ===== 自动生成边框贴图 =====
+    "outlineColor": "FF2200",
+    "outlineRadius": 6
+}

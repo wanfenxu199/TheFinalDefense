@@ -1,0 +1,37 @@
+{
+    "name": "空指针",
+    "description": "Java异常实体化。开火时可能抛出NullPointerException——有时打中敌人，有时打中自己。",
+    "type": "PowerTurret",
+    "category": "turret",
+    "alwaysUnlocked": false,
+
+    "health": 300,
+    "size": 2,
+    "range": 240,
+    "reload": 15,
+    "rotateSpeed": 6,
+    "shootCone": 20,
+    "targetAir": true,
+    "targetGround": true,
+
+    "shootType": {
+        "type": "BasicBulletType",
+        "damage": 9999,
+        "speed": 10,
+        "lifetime": 60,
+        "hitSize": 4,
+        "status": "electrified",
+        "statusDuration": 60,
+        "hitEffect": "hitBulletBig",
+        "shootEffect": "shootBig",
+        "hitSound": "explosion"
+    },
+
+    "requirements": [
+        { "item": "silicon", "amount": 1 }
+    ],
+
+    "consumes": { "power": 0.1 },
+
+    "shootSound": "laser"
+}

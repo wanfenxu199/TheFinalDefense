@@ -1,0 +1,10 @@
+{
+  "name": "终焉防线",
+  "displayName": "TheFinalDefense",
+  "author": "晚风叙遥",
+  "description": "一个自动生成的模组，感谢deepseek",
+  "version": "1.0",
+  "minGameVersion": 157.1，
+  "script": ["main.js"]
+  
+}

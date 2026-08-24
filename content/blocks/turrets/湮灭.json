@@ -1,0 +1,223 @@
+{
+    "type": "PowerTurret",
+    "name": "湮灭裂变炮",
+    "description": "释放恒星核心的能量，湮灭一切。",
+    "size": 4,
+    "health": 2500,
+    "range": 320,
+    "reload": 120,
+    "rotateSpeed": 2,
+    "shootCone": 360,
+
+    // 射击特效：开火时炮口出现一个旋转的能量环
+    "shootEffect": {
+        "type": "MultiEffect",
+        "effects": [
+            {
+                "type": "ParticleEffect",
+                "particles": 32,
+                "length": 40,
+                "sizeFrom": 10,
+                "sizeTo": 0,
+                "colorFrom": "FFDD88",
+                "colorTo": "FF6600",
+                "lifetime": 30,
+                "cone": 360,
+                "interp": "pow5Out"
+            },
+            {
+                "type": "WaveEffect",
+                "sizeFrom": 0,
+                "sizeTo": 35,
+                "strokeFrom": 8,
+                "strokeTo": 0,
+                "colorFrom": "FFFFFF",
+                "colorTo": "FFAA00",
+                "lifetime": 20,
+                "interp": "pow2Out"
+            }
+        ]
+    },
+
+    // 弹药类型：发射能量球
+    "shootType": {
+        "type": "BasicBulletType",
+        "damage": 500,
+        "speed": 5,
+        "lifetime": 64,
+        "hitSize": 16,
+
+        // 子弹飞行时的拖尾特效
+        "trailEffect": {
+            "type": "ParticleEffect",
+            "particles": 2,
+            "length": 25,
+            "sizeFrom": 8,
+            "sizeTo": 0,
+            "colorFrom": "FFDD88",
+            "colorTo": "FF4400",
+            "lifetime": 15
+        },
+        "trailChance": 1,
+        "trailLength": 30,
+        "trailWidth": 10,
+
+        // 命中目标时的主特效：超大爆炸
+        "hitEffect": {
+            "type": "MultiEffect",
+            "effects": [
+                // 1. 巨型冲击波
+                {
+                    "type": "WaveEffect",
+                    "sizeFrom": 5,
+                    "sizeTo": 80,
+                    "strokeFrom": 15,
+                    "strokeTo": 0,
+                    "colorFrom": "FFFFFF",
+                    "colorTo": "FF4400",
+                    "lifetime": 25,
+                    "interp": "pow3Out"
+                },
+                // 2. 内层能量环
+                {
+                    "type": "WaveEffect",
+                    "sizeFrom": 0,
+                    "sizeTo": 60,
+                    "strokeFrom": 8,
+                    "strokeTo": 0,
+                    "colorFrom": "FFDD88",
+                    "colorTo": "FF8800",
+                    "lifetime": 20,
+                    "interp": "pow2Out"
+                },
+                // 3. 大量火花粒子
+                {
+                    "type": "ParticleEffect",
+                    "particles": 60,
+                    "length": 80,
+                    "sizeFrom": 12,
+                    "sizeTo": 0,
+                    "colorFrom": "FFAA44",
+                    "colorTo": "FF2200",
+                    "lifetime": 50,
+                    "cone": 360,
+                    "interp": "pow4Out"
+                },
+                // 4. 二次爆裂粒子
+                {
+                    "type": "ParticleEffect",
+                    "particles": 30,
+                    "length": 50,
+                    "sizeFrom": 8,
+                    "sizeTo": 0,
+                    "colorFrom": "66DDFF",
+                    "colorTo": "FFFFFF",
+                    "lifetime": 30,
+                    "cone": 360,
+                    "interp": "pow3Out"
+                },
+                // 5. 碎裂效果
+                {
+                    "type": "ParticleEffect",
+                    "particles": 20,
+                    "lenFrom": 20,
+                    "lenTo": 0,
+                    "strokeFrom": 4,
+                    "strokeTo": 0,
+                    "baseLength": 40,
+                    "line": true,
+                    "colorFrom": "FFFFFF",
+                    "colorTo": "FFAA00",
+                    "lifetime": 20
+                }
+            ]
+        },
+
+        // 子弹分裂效果：命中后分裂出4个小能量弹
+        "fragBullets": 6,
+        "fragVelocityMin": 2,
+        "fragVelocityMax": 5,
+        "fragBullet": {
+            "type": "BasicBulletType",
+            "damage": 80,
+            "speed": 4,
+            "lifetime": 30,
+            "hitSize": 6,
+            "splashDamage": 50,
+            "splashDamageRadius": 20,
+            "trailEffect": {
+                "type": "ParticleEffect",
+                "particles": 1,
+                "length": 10,
+                "sizeFrom": 4,
+                "sizeTo": 0,
+                "colorFrom": "66DDFF",
+                "colorTo": "FFFFFF",
+                "lifetime": 10
+            },
+            "hitEffect": {
+                "type": "WaveEffect",
+                "sizeFrom": 0,
+                "sizeTo": 25,
+                "strokeFrom": 4,
+                "strokeTo": 0,
+                "colorFrom": "FFFFFF",
+                "colorTo": "66DDFF",
+                "lifetime": 15
+            }
+        }
+    },
+
+    // 电力消耗
+    "consumes": {
+        "power": 12.0
+    },
+
+    // 建造花费
+    "requirements": [
+        { "item": "copper", "amount": 400 },
+        { "item": "lead", "amount": 300 },
+        { "item": "silicon", "amount": 250 },
+        { "item": "plastanium", "amount": 200 },
+        { "item": "surge-alloy", "amount": 150 },
+        { "item": "phase-fabric", "amount": 100 }
+    ],
+
+    // 炮塔外观绘制：旋转的华丽光环
+    "drawer": {
+        "type": "DrawTurret",
+        "parts": [
+            {
+                "type": "ShapePart",
+                "progress": "warmup",
+                "y": -12,
+                "sides": 6,
+                "color": "66DDFF",
+                "rotateSpeed": 2,
+                "stroke": 0,
+                "strokeTo": 3,
+                "hollow": true,
+                "radius": 0,
+                "radiusTo": 28,
+                "layer": 110
+            },
+            {
+                "type": "ShapePart",
+                "progress": "warmup",
+                "y": -12,
+                "sides": 3,
+                "color": "FF8800",
+                "rotateSpeed": -3,
+                "stroke": 0,
+                "strokeTo": 2,
+                "hollow": true,
+                "radius": 0,
+                "radiusTo": 18,
+                "layer": 110
+            }
+        ]
+    },
+
+    "category": "turret",
+    "alwaysUnlocked": true
+}

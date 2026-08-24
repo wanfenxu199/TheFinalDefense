@@ -1,0 +1,31 @@
+{
+    "name": "反击墙",
+    "description": "受到攻击时会自动释放电击，反击攻击者。攻防一体的高级墙体。",
+    "type": "Wall",
+    "category": "defense",
+    "alwaysUnlocked": true,
+
+    "health": 4000,
+    "armor": 6,
+    "size": 2,
+    "breakable": true,
+    "solid": true,
+    "floating": false,
+
+    // ===== 反击效果 =====
+    "lightningChance": 0.5,
+    "lightningDamage": 50,
+    "lightningLength": 4,
+    "lightningColor": "66DDFF",
+
+    "requirements": [
+        { "item": "copper", "amount": 200 },
+        { "item": "lead", "amount": 150 },
+        { "item": "silicon", "amount": 120 },
+        { "item": "plastanium", "amount": 80 },
+        { "item": "surge-alloy", "amount": 50 }
+    ],
+
+    "outlineColor": "FFAA00",
+    "outlineRadius": 3
+}

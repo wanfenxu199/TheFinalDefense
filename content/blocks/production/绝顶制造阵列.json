@@ -1,0 +1,32 @@
+{
+    "type": "UnitFactory",
+    "name": "绝顶制造阵列",
+    "description": "生产终极战斗单位的工厂。",
+    "size": 4,
+    "health": 1000,
+    "hasPower": true,
+    "hasItems": true,
+    "configurable": true,
+    "rotate": true,
+    "category": "units",
+    "alwaysUnlocked": true,
+
+    "consumes": {
+        "power": 20
+    },
+
+    "plans": [
+        {
+            "unit": "全能战斗平台",
+            "time": 600,
+            "requirements": [
+                "copper/600",
+                "lead/500",
+                "silicon/400",
+                "plastanium/300",
+                "surge-alloy/250",
+                "phase-fabric/150"
+            ]
+        }
+    ]
+}
